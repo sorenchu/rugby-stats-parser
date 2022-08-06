@@ -10,7 +10,7 @@ class CsvFile:
     def get_file_content(self):
         rows = []
         with open(self.path) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=self.delimiter)
+            csv_reader = csv.DictReader(csv_file, delimiter=self.delimiter)
             for row in csv_reader:
                 rows.append(row)
         return rows
