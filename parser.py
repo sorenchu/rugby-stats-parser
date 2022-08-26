@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from csv_file import CsvFile
-from tackler import Tackler
-from pprint import pprint
+from stats.tackler import Tackler
 
 PLAYER = 0
 QUALITY = 1
@@ -26,7 +25,7 @@ def main():
             tacklers[tackle[PLAYER]].add_tackle(tackle[QUALITY], tackle[ZONE])
     for player, tackles in tacklers.items():
         print(player)
-        pprint(tackles)
+        print(tackles)
 
 
 if __name__ == "__main__":
