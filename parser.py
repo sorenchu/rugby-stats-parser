@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 from csv_file import CsvFile
+from tackler import Tackler
 from pprint import pprint
+
+PLAYER = 0
+QUALITY = 1
+ZONE = 2
 
 
 def filter_data(rows):
@@ -13,24 +18,15 @@ def main():
     csv = CsvFile("mock_tackle.csv")
     # csv = CsvFile("mock_touch.csv")
     tackles = filter_data(csv.get_file_content())
-    # print(tackles)
     tacklers = {}
     for tackle in tackles:
-        if tackle[0] not in tacklers.keys():
-            tacklers[tackle[0]] = {
-                "QP0": 0,
-                "QP1": 0,
-                "QP2": 0,
-                "QP3": 0,
-                "ZP0": 0,
-                "ZP1": 0,
-                "ZP2": 0,
-                "ZP3": 0,
-            }
+        if tackle[PLAYER] not in tacklers.keys():
+            tacklers[tackle[PLAYER]] = Tackler()
         else:
-            tacklers[tackle[0]][tackle[1]] += 1
-            tacklers[tackle[0]][tackle[2]] += 1
-    pprint(tacklers)
+            tacklers[tackle[PLAYER]].add_tackle(tackle[QUALITY], tackle[ZONE])
+    for player, tackles in tacklers.items():
+        print(player)
+        pprint(tackles)
 
 
 if __name__ == "__main__":
