@@ -15,3 +15,9 @@ class CsvFile:
                 rows.append(row)
         return rows
         
+    def write_csv_file(self, data):
+        with open(self.path, "w", encoding="UTF8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerows([data.keys()])
+            writer.writerows([data.values()])
+            

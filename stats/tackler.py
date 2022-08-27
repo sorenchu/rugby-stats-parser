@@ -1,24 +1,33 @@
 class Tackler:
 
     def __init__(self):
-        self.stats = {
-           "QP0": 0,
-           "QP1": 0,
-           "QP2": 0,
-           "QP3": 0,
-           "ZP0": 0,
-           "ZP1": 0,
-           "ZP2": 0,
-           "ZP3": 0,
+        self.tackles = {
+            "QP0-ZP0": 0,
+            "QP0-ZP1": 0,
+            "QP0-ZP2": 0,
+            "QP0-ZP3": 0,
+            "QP1-ZP0": 0,
+            "QP1-ZP1": 0,
+            "QP1-ZP2": 0,
+            "QP1-ZP3": 0,
+            "QP2-ZP0": 0,
+            "QP2-ZP1": 0,
+            "QP2-ZP2": 0,
+            "QP2-ZP3": 0,
+            "QP3-ZP0": 0,
+            "QP3-ZP1": 0,
+            "QP3-ZP2": 0,
+            "QP3-ZP3": 0,
         }
 
     def add_tackle(self, quality: str, zone: str):
-        self.stats[quality] += 1
-        self.stats[zone] += 1
+        if f"{quality}-{zone}" not in self.tackles.keys():
+            self.tackles[f"{quality}-{zone}"] = 0
+        self.tackles[f"{quality}-{zone}"] += 1
 
     def __str__(self):
         content = ""
-        for key, value in self.stats.items():
+        for key, value in self.tackles.items():
             if content == "":
                 content = f"{key}: {value}\n"
             else:
