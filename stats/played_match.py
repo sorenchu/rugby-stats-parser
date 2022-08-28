@@ -1,5 +1,6 @@
 from .tackler import Tackler
 from csv_file import CsvFile
+import os
 
 class PlayedMatch:
 
@@ -19,20 +20,19 @@ class PlayedMatch:
     def analyze_tackles(self, path):
         csv = CsvFile(path)
         tackles = self.filter_data(csv.get_file_content())
-        tacklers = {}
-        total_tackles = Tackler()
+        total_tackles = Tackler("total")
         for tackle in tackles:
-            if tackle[self.PLAYER] not in tacklers.keys():
-                tacklers[tackle[self.PLAYER]] = Tackler()
+            if tackle[self.PLAYER] not in self.tacklers.keys():
+                self.tacklers[tackle[self.PLAYER]] = Tackler(tackle[self.PLAYER])
             else:
-                tacklers[tackle[self.PLAYER]].add_tackle(tackle[self.QUALITY], tackle[self.ZONE])
+                self.tacklers[tackle[self.PLAYER]].add_tackle(tackle[self.QUALITY], tackle[self.ZONE])
                 total_tackles.add_tackle(tackle[self.QUALITY], tackle[self.ZONE])
-        for player, tackles in tacklers.items():
-            print(player)
-            print(tackles)
-        print("Total tackles:")
-        print(total_tackles)
+        self.tacklers["total"] = total_tackles
 
-        csv_writer = CsvFile("output.csv", ",")
-        csv_writer.write_csv_file(total_tackles.sort_tackles())
+    def dump_tackles(self, output_path):
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        csv_writer = CsvFile(output_path, ",")
+        for _, tackler in self.tacklers.items():
+            csv_writer.write_csv_file(tackler.get_tackles())
 

@@ -1,7 +1,8 @@
 class Tackler:
 
-    def __init__(self):
+    def __init__(self, player):
         self.tackles = {
+            "player": player,
             "QP0-ZP0": 0,
             "QP0-ZP1": 0,
             "QP0-ZP2": 0,
@@ -24,6 +25,9 @@ class Tackler:
         if f"{quality}-{zone}" not in self.tackles.keys():
             self.tackles[f"{quality}-{zone}"] = 0
         self.tackles[f"{quality}-{zone}"] += 1
+
+    def get_tackles(self):
+        return self.tackles
 
     def __str__(self):
         content = ""
