@@ -22,8 +22,6 @@ class Tackler:
         }
 
     def add_tackle(self, quality: str, zone: str):
-        if f"{quality}-{zone}" not in self.tackles.keys():
-            self.tackles[f"{quality}-{zone}"] = 0
         self.tackles[f"{quality}-{zone}"] += 1
 
     def get_tackles(self):
