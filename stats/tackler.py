@@ -1,8 +1,7 @@
 class Tackler:
 
-    def __init__(self, player):
+    def __init__(self):
         self.tackles = {
-            "player": player,
             "QP0-ZP0": 0,
             "QP0-ZP1": 0,
             "QP0-ZP2": 0,

@@ -1,8 +1,7 @@
 class Penalty:
 
-    def __init__(self, player):
+    def __init__(self):
         self.penalties = {
-            "player": player,
             "No quitarse en ruck-ZG0": 0,
             "No quitarse en ruck-ZG1": 0,
             "No quitarse en ruck-ZG2": 0,
