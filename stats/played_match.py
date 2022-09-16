@@ -9,6 +9,8 @@ class PlayedMatch:
     QUALITY = 1
     ZONE = 2
     PENALTY_TYPE = 1
+    TACKLE = "Placaje"
+    PENALTY = "Golpe de castigo"
 
     def __init__(self):
         self.tacklers = {}
@@ -20,9 +22,10 @@ class PlayedMatch:
             data.append(list(dict(filter(lambda elem: elem[1] == "1", row.items())).keys()))
         return data
 
-    def analyze_tackles(self, path):
-        csv = CsvFile(path)
-        tackles = self.filter_data(csv.get_file_content())
+    def analyze_tackles(self, csv_file):
+        csv_file.extract_fragment_by_name(self.TACKLE)
+        rows = csv_file.get_file_content_by_fragment_name(self.TACKLE)
+        tackles = self.filter_data(rows)
         total_tackles = Tackler()
         for tackle in tackles:
             if tackle[self.PLAYER] not in self.tacklers.keys():
@@ -38,9 +41,10 @@ class PlayedMatch:
         for key, tackler in self.tacklers.items():
             csv_writer.write_csv_file(key, tackler.get_tackles())
 
-    def analyze_penalties(self, path):
-        csv = CsvFile(path)
-        penalties = self.filter_data(csv.get_file_content())
+    def analyze_penalties(self, csv_file):
+        csv_file.extract_fragment_by_name("Golpe de castigo")
+        rows = csv_file.get_file_content_by_fragment_name("Golpe de castigo")
+        penalties = self.filter_data(rows)
         total_penalties = Penalty()
         for penalty in penalties:
             if penalty[self.PLAYER] not in self.penaltiers.keys():
