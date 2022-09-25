@@ -9,11 +9,6 @@ from itertools import product
 class PlayedMatch:
 
     PLAYER = 0
-    QUALITY = 1
-    ZONE = 2
-    PENALTY_TYPE = 1
-    TACKLE = "Placaje"
-    PENALTY = "Golpe de castigo"
 
     def __init__(self):
         self.tacklers = {}
