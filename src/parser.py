@@ -5,11 +5,10 @@ from csv_file import CsvFile
 def main():
     file_input = CsvFile("example.csv")
     played_match = PlayedMatch()
-    played_match.analyze_penalties(file_input)
-    played_match.analyze_tackles(file_input)
-    played_match.dump_penalties("patata.csv")
-    played_match.dump_tackles("tomas.csv")
-
+    tackles = played_match.analyze_element(file_input, "tackle")
+    played_match.dump_elements("tackles.csv", tackles)
+    penalties = played_match.analyze_element(file_input, "penalty")
+    played_match.dump_elements("penalties.csv", penalties)
 
 if __name__ == "__main__":
     main()
