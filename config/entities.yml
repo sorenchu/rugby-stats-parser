@@ -12,7 +12,7 @@ tackle:
       - "ZP2"
       - "ZP3"
 penalty:
-  name: "Golpe de Castigo"
+  name: "Golpe de castigo"
   keys:
     type:
       - "No quitarse en ruck"
