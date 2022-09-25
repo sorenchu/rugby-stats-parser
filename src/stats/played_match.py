@@ -35,8 +35,8 @@ class PlayedMatch:
             csv_writer.write_csv_file(key, tackler.get_tackles())
 
     def analyze_penalties(self, csv_file):
-        csv_file.extract_fragment_by_name("Golpe de castigo")
-        rows = csv_file.get_file_content_by_fragment_name("Golpe de castigo")
+        csv_file.extract_fragment_by_name(self.PENALTY)
+        rows = csv_file.get_file_content_by_fragment_name(self.PENALTY)
         total_penalties = Penalty()
         for penalty in penalties:
             if penalty[self.PLAYER] not in self.penaltiers.keys():
