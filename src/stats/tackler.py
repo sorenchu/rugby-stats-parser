@@ -1,24 +1,9 @@
 class Tackler:
 
-    def __init__(self):
-        self.tackles = {
-            "QP0-ZP0": 0,
-            "QP0-ZP1": 0,
-            "QP0-ZP2": 0,
-            "QP0-ZP3": 0,
-            "QP1-ZP0": 0,
-            "QP1-ZP1": 0,
-            "QP1-ZP2": 0,
-            "QP1-ZP3": 0,
-            "QP2-ZP0": 0,
-            "QP2-ZP1": 0,
-            "QP2-ZP2": 0,
-            "QP2-ZP3": 0,
-            "QP3-ZP0": 0,
-            "QP3-ZP1": 0,
-            "QP3-ZP2": 0,
-            "QP3-ZP3": 0,
-        }
+    def __init__(self, combination_list):
+        self.tackles = {}
+        for combination in combination_list:
+            self.tackles[combination] = 0
 
     def add_tackle(self, quality: str, zone: str):
         self.tackles[f"{quality}-{zone}"] += 1

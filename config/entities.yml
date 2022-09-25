@@ -1,0 +1,38 @@
+tackle:
+  name: "Placaje"
+  keys:
+    quality:
+      - "QP0"
+      - "QP1"
+      - "QP2"
+      - "QP3"
+    zones:
+      - "ZP0"
+      - "ZP1"
+      - "ZP2"
+      - "ZP3"
+penalty:
+  name: "Golpe de Castigo"
+  keys:
+    type:
+      - "No quitarse en ruck"
+      - "Manos en el ruck"
+      - "Tirarse en el ruck"
+      - "Fuera de juego"
+      - "Placaje alto"
+      - "Placaje peligroso" 
+      - "Placaje sin brazos"
+      - "Entrar por el lateral" 
+      - "Hundir el maul"
+      - "Avant voluntario"
+      - "Retenido"
+      - "Placaje retardado" 
+      - "Obstrucción"
+      - "Hundir la melé"
+      - "Introducción parcial"
+      - "Placaje en el aire"
+    zone:
+      - "ZG0"
+      - "ZG1"
+      - "ZG2"
+      - "ZG3"
