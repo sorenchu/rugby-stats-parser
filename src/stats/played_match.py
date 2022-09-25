@@ -19,13 +19,10 @@ class PlayedMatch:
     def analyze_tackles(self, csv_file):
         csv_file.extract_fragment_by_name(self.TACKLE)
         rows = csv_file.get_file_content_by_fragment_name(self.TACKLE)
-        total_tackles = Tackler()
         for tackle in tackles:
             if tackle[self.PLAYER] not in self.tacklers.keys():
                 self.tacklers[tackle[self.PLAYER]] = Tackler()
             self.tacklers[tackle[self.PLAYER]].add_tackle(tackle[self.QUALITY], tackle[self.ZONE])
-            total_tackles.add_tackle(tackle[self.QUALITY], tackle[self.ZONE])
-        self.tacklers["total"] = total_tackles
 
     def dump_tackles(self, output_path):
         if os.path.exists(output_path):
@@ -37,13 +34,10 @@ class PlayedMatch:
     def analyze_penalties(self, csv_file):
         csv_file.extract_fragment_by_name(self.PENALTY)
         rows = csv_file.get_file_content_by_fragment_name(self.PENALTY)
-        total_penalties = Penalty()
         for penalty in penalties:
             if penalty[self.PLAYER] not in self.penaltiers.keys():
                 self.penaltiers[penalty[self.PLAYER]] = Penalty()
             self.penaltiers[penalty[self.PLAYER]].add_penalty(penalty[self.PENALTY_TYPE], penalty[self.ZONE])
-            total_penalties.add_penalty(penalty[self.PENALTY_TYPE], penalty[self.ZONE])
-        self.penaltiers["total"] = total_penalties
 
     def dump_penalties(self, output_path):
         if os.path.exists(output_path):
