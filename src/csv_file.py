@@ -33,10 +33,10 @@ class CsvFile:
         with open(self.path) as f:
             getting_row = False
             content_file = f.read()
-            if content_file.find(f"CATEGORY: {fragment_name},,,") == -1:
+            if content_file.find(f"CATEGORY: {fragment_name}") == -1:
                 return
-            init = content_file.find(f"CATEGORY: {fragment_name},,,") + len(f"CATEGORY: {fragment_name},,,\n")
-            end = content_file.find("\n,,,\n", init)
+            init = content_file.find(f"CATEGORY: {fragment_name}") + len(f"CATEGORY: {fragment_name}\n")
+            end = content_file.find("\n\n", init)
             self.fragments[fragment_name] = content_file[init:end+1].replace(",,,", "")
 
     def filter_data(self, rows):
