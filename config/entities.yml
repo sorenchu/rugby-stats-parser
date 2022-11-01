@@ -11,8 +11,9 @@ tackle:
       - "ZP1"
       - "ZP2"
       - "ZP3"
+  output: "tackles.csv"
 penalty:
-  name: "Golpe de castigo"
+  name: "Golpe de Castigo"
   keys:
     type:
       - "No quitarse en ruck"
@@ -32,7 +33,8 @@ penalty:
       - "Introducción parcial"
       - "Placaje en el aire"
     zone:
-      - "ZG0"
-      - "ZG1"
-      - "ZG2"
-      - "ZG3"
+      - "ZP0"
+      - "ZP1"
+      - "ZP2"
+      - "ZP3"
+  output: "penalties.csv"
