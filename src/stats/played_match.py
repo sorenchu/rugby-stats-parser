@@ -1,5 +1,3 @@
-from .tackler import Tackler
-from .penalty import Penalty
 from .match_element import MatchElement
 from csv_file import CsvFile
 import os
